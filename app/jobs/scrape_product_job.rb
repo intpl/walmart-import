@@ -7,11 +7,13 @@ class ScrapeProductJob < ApplicationJob
 
     @doc = Nokogiri::HTML(open(@url))
 
-    Product.create(
+    product = Product.create(
       walmart_id: walmart_id,
       name: name,
       price: price
     )
+
+    AcquireReviewsForProduct.new(walmart_id, product.id).run
   end
 
   def name

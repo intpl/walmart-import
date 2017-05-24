@@ -13,8 +13,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
+          <div class="alert-danger">
+            <%= flash[:error] %>
+          </div>
           <div class="alert-info">
-            <%= notice %>
+            <%= flash[:notice] %>
           </div>
         </div>
       </div>

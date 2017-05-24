@@ -10,10 +10,21 @@
     <% end %>
   </div>
 </div>
+<br />
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <% @products.each do |product| %>
-      <h2> <%= product.name %> (<%= product.price / 100.0 %>) </h2>
+      <h1> <%= product.name %> ($<%= product.price / 100.0 %>) </h1>
+      <% product.reviews.each do |review| %>
+        <blockquote>
+          <p> <%= review.content %> </p>
+          <footer class="blockquote-footer">
+            <%= review.author %>
+            (<%= review.rating %>/5)
+          </footer>
+        </blockquote>
+        <br />
+      <% end %>
     <% end %>
   </div>
 </div>
